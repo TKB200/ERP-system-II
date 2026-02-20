@@ -1,0 +1,103 @@
+# ERP System Project Structure
+
+This ERP system follows a modular structure for better maintainability and scalability.
+
+## Directory Structure
+
+/assets` - Static files (CSS, JS, Images)
+/config` - Configuration and Database scripts
+/includes` - Shared components and helper functions
+/modules` - Core business modules
+/sql` - Database migration and backup storage
+  - `/css` - Styling files (style.css)
+  - `/js` - Frontend logic (main.js)
+  - `/images` - Product and profile images
+  - `db.php` - Database connection using PDO
+  - `database.sql` - SQL script to initialize the database
+  - `header.php` - Sidebar and navigation
+  - `footer.php` - Layout footer and scripts
+  - `functions.php` - Common utility functions
+  - `/inventory` - Product and stock management
+  - `/sales` - Customer orders and sales tracking
+  - `/purchases` - Supplier orders and stock intake
+  - `/customers` - CRM and customer profiles
+  - `/suppliers` - Vendor management
+  - `/hr` - Employee management and payroll
+  - `/finance` - Accounting, income, and expenses
+  - `/reports` - Analytics and business intelligence
+- `index.php` - Main Dashboard
+- `login.php` - Authentication page
+- `logout.php` - Session termination
+
+## Coding Standards
+
+- Use **PDO** for all database interactions to prevent SQL injection.
+- Modularize logic into the `/modules` directory.
+- Keep UI consistent using the global `style.css` and Lucide icons.
+- Add helper functions to `includes/functions.php`.
+
+
+
+# ERP System Definition
+
+## 1. Project Overview
+The **ERP System** is a modular web-based application designed to manage core business processes, including inventory, sales, purchases, human resources, and finance. It aims to provide a centralized platform for data-driven decision-making and efficient resource management.
+
+## 2. Technology Stack
+- **Frontend**: HTML5, CSS3 (Vanilla), Vanilla JavaScript
+- **Backend**: PHP (Core)
+- **Database**: MySQL (PDO for Secure Connection)
+- **Icons**: Lucide Icons
+- **Fonts**: Inter (Google Fonts)
+
+## 3. Core Modules
+### 3.1 Dashboard
+- Real-time business overview.
+- Key performance indicators (KPIs) like total sales, stock levels, and active customers.
+- Low stock alerts and recent transaction summaries.
+
+### 3.2 Inventory Management
+- Product catalog management (Add, Edit, Delete).
+- Stock level tracking.
+- Category-based organization.
+
+### 3.3 Sales & CRM
+- Customer database management.
+- Sales order processing.
+- Revenue tracking and history.
+
+### 3.4 Purchasing & Supply Chain
+- Supplier management.
+- Purchase order creation and tracking.
+- Stock replenishment logic.
+
+### 3.5 Human Resources (HR)
+- Employee records and profiles.
+- Role-based access control (Admin, Manager, Staff).
+
+### 3.6 Finance & Accounting
+- Expense tracking.
+- Income statements and basic financial reporting.
+
+### 3.7 Reports & Analytics
+- Visual data representation.
+- Exportable business reports (PDF/Excel).
+
+## 4. System Architecture
+The system follows a **Modular Monolith** architecture:
+- **Presentation Layer**: PHP files generating HTML with shared `header.php` and `footer.php`.
+- **Logic Layer**: Modularized business logic within the `/modules` directory.
+- **Data Access Layer**: Centrally managed PDO connection in `config/db.php`.
+
+## 5. Security & Authentication
+- Session-based authentication.
+- Password hashing using `password_hash()` (BCRYPT).
+- Input sanitization to prevent XSS.
+- Prepared statements (PDO) to prevent SQL Injection.
+- Role-based permissions for sensitive operations.
+
+## 6. Development Workflow
+1. **Database First**: Define schema in `config/database.sql`.
+2. **Modular Development**: Create module-specific logic in `/modules`.
+3. **Consistent UI**: Utilize global `assets/css/style.css` for all components.
+4. **Utility Functions**: Place reusable logic in `includes/functions.php`.
